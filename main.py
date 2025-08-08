@@ -171,7 +171,7 @@ def main():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     world_pos = camera.screen_to_world(pygame.mouse.get_pos())
                     if event.button == 1: # Left click to drag
-                        shape_info = space.point_query_nearest(world_pos, 0, pymunk.ShapeFilter())
+                        shape_info = space.point_query_nearest(tuple(world_pos), 0, pymunk.ShapeFilter())
                         if shape_info and shape_info.shape.body.body_type == pymunk.Body.DYNAMIC:
                             selected_body = shape_info.shape.body
                     elif event.button == 2: # Middle click to spawn
@@ -201,7 +201,7 @@ def main():
         to_be_removed = set()
         if mouse_pressed[2] and not manager.get_focus_set(): # Right click to delete
             world_pos = camera.screen_to_world(pygame.mouse.get_pos())
-            shape_info = space.point_query_nearest(world_pos, 0, pymunk.ShapeFilter())
+            shape_info = space.point_query_nearest(tuple(world_pos), 0, pymunk.ShapeFilter())
             if shape_info and shape_info.shape.body.body_type == pymunk.Body.DYNAMIC:
                 body_to_remove = shape_info.shape.body
                 if body_to_remove in boxes:
