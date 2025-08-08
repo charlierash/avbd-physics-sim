@@ -46,7 +46,7 @@ class GUI:
     def __init__(self, manager, screen_width):
         self.manager = manager
         self.panel = pygame_gui.elements.UIPanel(relative_rect=pygame.Rect((screen_width - 320, 0), (320, 720)),
-                                                  starting_layer_height=0,
+                                                  starting_height=0,
                                                   manager=self.manager)
 
         self.sliders = {}
